@@ -9,16 +9,17 @@ function loadApp() {
   //wine quiz in the DOM.
   console.log('`loadApp` ran')
   $('#wineApp').append(
-    `<section>
-      <h1>How much do you really know about wine?</h1>
+    `<main class=container>
+    <section>
+      <h2>How much do you really know about wine?</h2>
       <p>
       <img src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles"></p>
       <div>
         <button type="button" name="start" id="start-button">Click to start</button>
       </div>
-    </section>`
+    </section>
+      </main>`
   )
-
 }
 
 function startWineQuiz() {
