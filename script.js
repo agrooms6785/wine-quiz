@@ -1,8 +1,8 @@
 'use strict'
 
 //sets variables to zero
-// let currentQuestion = 0
-// let score = 0
+let currentQuestion = 0
+let score = 0
 
 function loadApp() {
   //This function will create and load the main page for my
@@ -26,6 +26,24 @@ function startWineQuiz() {
   //This function will start the quiz when user clicks
   //start button
   console.log('`startWineQuiz` ran')
+  $('#start-button').on('click', function (){
+
+  })
+}
+
+function renderQuestion() {
+  //This function will render the first question
+  console.log('`renderQuestion` ran')
+  if (currentQuestion < STORE.length) {
+    //I want to add a div with class qaForm but I don't want all the elements
+    //created in loadApp to be in the DOM.
+  }
+}
+
+function renderAnswers() {
+  //This function will render the answer options for the
+  //current question
+  console.log('`renderAnswers` ran')
 }
 
 function updateQuestion() {
@@ -37,17 +55,6 @@ function updateScore() {
   //This function updates the score; It will increment the
   //score based on user response
   console.log('`updateScore` ran')
-}
-
-function renderQuestion() {
-  //This function will render the first question
-  console.log('`renderQuestion` ran')
-}
-
-function updateAnswers() {
-  //This function will render the answer options for the
-  //current question
-  console.log('`updateAnswers` ran')
 }
 
 function submitAnswer() {
@@ -68,6 +75,7 @@ function wrongAnswer() {
   console.log('`wrongAnswer` ran')
 }
 
+//is this a necessary function? Can I reuse renderQuestion?
 function nextQuestion() {
   //This function will render the next question
   console.log('`nextQuestion` ran')
@@ -89,8 +97,8 @@ function makeQuiz() {
   loadApp()
   startWineQuiz()
   renderQuestion()
-  updateAnswers()
-  nextQuestion()
+  renderAnswers()
+  nextQuestion() //do I need this or can I reuse renderQuestion?
   finalScore()
   restartQuiz()
 }
