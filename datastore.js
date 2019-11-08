@@ -1,3 +1,5 @@
+'use strict'
+
 const STORE = {
   questions: [//1
     {

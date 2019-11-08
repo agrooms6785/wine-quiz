@@ -1,11 +1,24 @@
+'use strict'
+
 //sets variables to zero
-let currentQuestion = 0
-let score = 0
+// let currentQuestion = 0
+// let score = 0
 
 function loadApp() {
   //This function will create and load the main page for my
   //wine quiz in the DOM.
   console.log('`loadApp` ran')
+  $('#wineApp').append(
+    `<section>
+      <h1>How much do you really know about wine?</h1>
+      <p>
+      <img src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles"></p>
+      <div>
+        <button type="button" name="start" id="start-button">Click to start</button>
+      </div>
+    </section>`
+  )
+
 }
 
 function startWineQuiz() {
@@ -68,6 +81,7 @@ function finalScore() {
 function restartQuiz() {
   //This function will take user back to main page
   //so they can restart the quiz
+  console.log('`restartQuiz` ran')
 }
 
 function makeQuiz() {
