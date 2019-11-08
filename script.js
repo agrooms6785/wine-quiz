@@ -10,14 +10,9 @@ function loadApp() {
   console.log('`loadApp` ran')
   $('#wineApp').append(
     `<main class=container>
-    <section>
-      <h1>How much do you really know about wine?</h1>
-      <p>
-      <img src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles"></p>
-      <div>
+    <h1>How much do you really know about wine?</h1>
+      <section><img src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles"></section>
         <button type="button" name="start" id="start-button">Click to start</button>
-      </div>
-    </section>
       </main>`
   )
 }
