@@ -13,26 +13,32 @@ function mainComponent (buttonText) {
 }
 
 function questionComponent () {
-return `<form class='question-container'>
-  <h2>${STORE[currentQuestion].question}</h2>
+return `<section class='questionAndScoreBar'>
+<ul>
+<li>Question ${currentQuestion+1}/8</li>
+<li>Score: ${score}</li>
+</ul>
+</section>
+<form class='question-container'>
+  <h2>${STORE.questions[currentQuestion].question}</h2>
     <fieldset name="answer options">
         <label for="answer-one">
-            <input type="radio" name="answer" id="answer-one" value="${STORE[currentQuestion].answers[0]}" required>
-            <span>${STORE[currentQuestion].answers[0]}</span>
+            <input type="radio" name="answer" id="answer-one" value="${STORE.questions[currentQuestion].answers[0]}" required>
+            <span>${STORE.questions[currentQuestion].answers[0]}</span>
         </label>
         <label for="answer-two">
-            <input type="radio" name="answer" id="answer-two" value="${STORE[currentQuestion].answers[1]}" required>
-            <span>${STORE[currentQuestion].answers[1]}</span>
+            <input type="radio" name="answer" id="answer-two" value="${STORE.questions[currentQuestion].answers[1]}" required>
+            <span>${STORE.questions[currentQuestion].answers[1]}</span>
         </label>
         <label for="answer-three">
-            <input type="radio" name="answer" id="answer-three" value="${STORE[currentQuestion].answers[2]}" required>
-            <span>${STORE[currentQuestion].answers[2]}</span>
+            <input type="radio" name="answer" id="answer-three" value="${STORE.questions[currentQuestion].answers[2]}" required>
+            <span>${STORE.questions[currentQuestion].answers[2]}</span>
         </label>
         <label for="answer-four">
-            <input type="radio" name="answer" id="answer-four" value="${STORE[currentQuestion].answers[3]}" required>
-            <span>${STORE[currentQuestion].answers[3]}</span>
+            <input type="radio" name="answer" id="answer-four" value="${STORE.questions[currentQuestion].answers[3]}" required>
+            <span>${STORE.questions[currentQuestion].answers[3]}</span>
         </label>
         <button type="submit" class="submitButton">SUBMIT</button>
     </fieldset>
-</form>`);
+</form>`
 }
