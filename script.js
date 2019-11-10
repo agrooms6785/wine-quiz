@@ -66,19 +66,6 @@ function renderQA() {
   submitAnswer()
   }
 
-function updateQuestion() {
-  //This function updates the question number
-  console.log('`updateQuestion` ran')
-  currentQuestion++
-}
-
-function updateScore() {
-  //This function updates the score; It will increment the
-  //score based on user response
-  console.log('`updateScore` ran')
-  score++
-}
-
 function submitAnswer() {
   //This function submits a selected answer and checks it against
   //the correct answer. It then runs answer functions accordingly.
@@ -105,8 +92,8 @@ function rightAnswer() {
   `<section class='feedback-container'><h3>That's correct!</h3>
 <img src='https://i.imgur.com/3sOqSPp.jpg' alt='cheers with wine glasses'><br>
 <button type='button' class='nextButton'>Submit</button></section>`)
-  updateQuestion()
-  updateScore()
+  currentQuestion++
+  score++
   handleNext()
 }
 
@@ -119,7 +106,7 @@ function wrongAnswer() {
   `<section class='feedback-container'><h3>Uh oh, wrong answer! The correct answer is actually: ${STORE.questions[currentQuestion].correctAnswer}.</h3>
 <img src='https://i.imgur.com/Ne4vN2G.jpg' alt='wine glass with splashing wine'><br>
 <button type='button' class='nextButton'>Submit</button></section>`)
-  updateQuestion()
+  currentQuestion++
   handleNext()
 }
 
