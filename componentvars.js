@@ -12,33 +12,33 @@ function mainComponent (buttonText) {
     </main>`
 }
 
-function questionComponent () {
-return `<section class='questionAndScoreBar'>
-<ul>
-<li>Question ${currentQuestion+1}/8</li>
-<li>Score: ${score}</li>
-</ul>
-</section>
-<form class='question-container'>
-  <h2>${STORE.questions[currentQuestion].question}</h2>
-    <fieldset name="answer options">
-        <label for="answer-one">
-            <input type="radio" name="answer" id="answer-one" value="${STORE.questions[currentQuestion].answers[0]}" required>
-            <span>${STORE.questions[currentQuestion].answers[0]}</span>
-        </label>
-        <label for="answer-two">
-            <input type="radio" name="answer" id="answer-two" value="${STORE.questions[currentQuestion].answers[1]}" required>
-            <span>${STORE.questions[currentQuestion].answers[1]}</span>
-        </label>
-        <label for="answer-three">
-            <input type="radio" name="answer" id="answer-three" value="${STORE.questions[currentQuestion].answers[2]}" required>
-            <span>${STORE.questions[currentQuestion].answers[2]}</span>
-        </label>
-        <label for="answer-four">
-            <input type="radio" name="answer" id="answer-four" value="${STORE.questions[currentQuestion].answers[3]}" required>
-            <span>${STORE.questions[currentQuestion].answers[3]}</span>
-        </label>
-        <button type="submit" class="submitButton">SUBMIT</button>
-    </fieldset>
-</form>`
-}
+// function questionComponent () {
+// return `<section class='questionAndScoreBar'>
+// <ul>
+// <li>Question ${currentQuestion+1}/8</li>
+// <li>Score: ${score}</li>
+// </ul>
+// </section>
+// <form class='question-container'>
+//   <h2>${STORE.questions[currentQuestion].question}</h2>
+//     <fieldset name="answer options">
+//         <label for="answer-one">
+//             <input type="radio" name="answer" id="answer-one" value="${STORE.questions[currentQuestion].answers[0]}" required>
+//             <span>${STORE.questions[currentQuestion].answers[0]}</span>
+//         </label>
+//         <label for="answer-two">
+//             <input type="radio" name="answer" id="answer-two" value="${STORE.questions[currentQuestion].answers[1]}" required>
+//             <span>${STORE.questions[currentQuestion].answers[1]}</span>
+//         </label>
+//         <label for="answer-three">
+//             <input type="radio" name="answer" id="answer-three" value="${STORE.questions[currentQuestion].answers[2]}" required>
+//             <span>${STORE.questions[currentQuestion].answers[2]}</span>
+//         </label>
+//         <label for="answer-four">
+//             <input type="radio" name="answer" id="answer-four" value="${STORE.questions[currentQuestion].answers[3]}" required>
+//             <span>${STORE.questions[currentQuestion].answers[3]}</span>
+//         </label>
+//         <button type="submit" class="submitButton">SUBMIT</button>
+//     </fieldset>
+// </form>`
+// }

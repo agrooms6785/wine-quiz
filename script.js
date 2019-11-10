@@ -31,19 +31,6 @@ function fader (classNameOne, classNameTwo, cb) {
   }, 800)
 }
 
-function updateQuestion() {
-  //This function updates the question number
-  console.log('`updateQuestion` ran')
-  currentQuestion++
-}
-
-function updateScore() {
-  //This function updates the score; It will increment the
-  //score based on user response
-  console.log('`updateScore` ran')
-  score++
-}
-
 function renderQA() {
   //This function will render the first question, then subsequent questions
   console.log('`renderQA` ran')
@@ -78,6 +65,19 @@ function renderQA() {
 </form>`)}
   submitAnswer()
   }
+
+function updateQuestion() {
+  //This function updates the question number
+  console.log('`updateQuestion` ran')
+  currentQuestion++
+}
+
+function updateScore() {
+  //This function updates the score; It will increment the
+  //score based on user response
+  console.log('`updateScore` ran')
+  score++
+}
 
 function submitAnswer() {
   //This function submits a selected answer and checks it against
@@ -170,6 +170,8 @@ function restartQuiz() {
 function makeQuiz() {
   loadApp()
   startWineQuiz()
+  // finalScore()
+  // restartQuiz()
 }
 
 $(makeQuiz)
