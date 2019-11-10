@@ -4,6 +4,18 @@
 let currentQuestion = 0
 let score = 0
 
+function mainComponent (buttonText) {
+  return `<main class='quiz-container'>
+      <section class='quiz-body animate'>
+        <h1>How much do you really know about wine?</h1>
+        <section class='image-body'>
+          <img class='banner-image' src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles">
+        </section>
+        <button type="button" name="start" id="start-button">${buttonText}</button>
+      </section>
+    </main>`
+}
+
 function loadApp() {
   //This function will create and load the main page for my
   //wine quiz in the DOM.
