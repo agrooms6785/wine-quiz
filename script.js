@@ -5,13 +5,13 @@ let currentQuestion = 0
 let score = 0
 
 function mainComponent (buttonText) {
-  return `<main class='quiz-container'>
+  return `<main class='quizContainer'>
       <section class='quiz-body animate'>
-        <h1>How much do you really know about wine?</h1>
+        <h1 class='main-heading'>How much do you really know about wine?</h1>
         <section class='image-body'>
-          <img class='banner-image' src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles">
+          <img class='bannerImg' src="https://i.imgur.com/wHo2o5F.jpg?1" alt="shelf with wine bottles">
         </section>
-        <button type="button" name="start" id="start-button">${buttonText}</button>
+        <footer><button type='button' name='start' class='button' id='startButton'>${buttonText}</button></footer>
       </section>
     </main>`
 }
@@ -27,9 +27,9 @@ function startWineQuiz() {
   //This function will start the quiz when user clicks
   //start button
   console.log('`startWineQuiz` ran')
-  $('#start-button').on('click', function () {
+  $('#startButton').on('click', function () {
     fader('.quiz-body', 'fade-out', function () {
-      $('#main-page-id').remove()
+      $('.quizContainer').remove()
       renderQA()
     })
   })
@@ -47,34 +47,35 @@ function renderQA() {
   //This function will render the first question, then subsequent questions
   console.log('`renderQA` ran')
   if (currentQuestion < STORE.questions.length) {
-  $('#wineApp').append(`<section class='questionAndScoreBar'>
+  $('#wineApp').append(`<main class='qAcontainer'> <section class='questionScoreBar'>
 <ul id='questionScoreList'>
-<li>Question ${currentQuestion+1}/8</li>
+<li>Question ${currentQuestion+1} of 8</li>
 <li>Score: ${score}</li>
 </ul>
-</section>
-<form class='question-container'>
+</section><br>
+<form class='questionContainer'>
   <h2>${STORE.questions[currentQuestion].question}</h2>
-    <fieldset name='answer options'>
+    <fieldset name='answer options' class='answerOptions'>
         <label for='answer-one'>
             <input type='radio' name='answer' id='answer-one' value='${STORE.questions[currentQuestion].answers[0]}' required>
             <span>${STORE.questions[currentQuestion].answers[0]}</span><br>
         </label>
-        <label for="answer-two">
-            <input type="radio" name="answer" id="answer-two" value="${STORE.questions[currentQuestion].answers[1]}" required>
+        <label for='answer-two'>
+            <input type='radio' name='answer' id='answer-two' value='${STORE.questions[currentQuestion].answers[1]}' required>
             <span>${STORE.questions[currentQuestion].answers[1]}</span><br>
         </label>
-        <label for="answer-three">
-            <input type="radio" name="answer" id="answer-three" value="${STORE.questions[currentQuestion].answers[2]}" required>
+        <label for='answer-three'>
+            <input type='radio' name='answer' id='answer-three' value='${STORE.questions[currentQuestion].answers[2]}' required>
             <span>${STORE.questions[currentQuestion].answers[2]}</span><br>
         </label>
-        <label for="answer-four">
-            <input type="radio" name="answer" id="answer-four" value="${STORE.questions[currentQuestion].answers[3]}" required>
+        <label for='answer-four'>
+            <input type='radio' name='answer' id='answer-four' value='${STORE.questions[currentQuestion].answers[3]}' required>
             <span>${STORE.questions[currentQuestion].answers[3]}</span><br>
         </label>
-        <button type="submit" class="submitButton">Check Answer</button>
     </fieldset>
-</form>`)}
+</form>
+<button type='submit' class='button' id='submitButton'>Check Answer</button>
+<main>`)}
   submitAnswer()
   }
 
@@ -82,7 +83,7 @@ function submitAnswer() {
   //This function submits a selected answer and checks it against
   //the correct answer. It then runs answer functions accordingly.
   console.log('`submitAnswer` ran')
-  $('.submitButton').on('click', function (event) {
+  $('#submitButton').on('click', function (event) {
     event.preventDefault()
     let selected = $('input:checked')
     let answer = selected.val()
@@ -101,9 +102,9 @@ function rightAnswer() {
   console.log('`rightAnswer` ran')
   $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='feedback-container'><h3>That's correct!</h3>
-<img src='https://i.imgur.com/3sOqSPp.jpg' alt='cheers with wine glasses'><br>
-<button type='button' class='nextButton'>Submit</button></section>`)
+  `<section class='feedbackContainer'><h2>That's correct!</h2>
+<img id='rightImg' src='https://i.imgur.com/3sOqSPp.jpg' alt='cheers with wine glasses'>
+<button type='button' class='button' id='nextButton'>Next</button></section>`)
   currentQuestion++
   score++
   handleNext()
@@ -115,9 +116,9 @@ function wrongAnswer() {
   console.log('`wrongAnswer` ran')
     $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='feedback-container'><h3>Uh oh, wrong answer! The correct answer is actually: ${STORE.questions[currentQuestion].correctAnswer}.</h3>
-<img src='https://i.imgur.com/Ne4vN2G.jpg' alt='wine glass with splashing wine'><br>
-<button type='button' class='nextButton'>Submit</button></section>`)
+  `<section class='feedbackContainer'><h2>Uh oh, wrong answer! The correct answer is actually: ${STORE.questions[currentQuestion].correctAnswer}</h2>
+<img id='wrongImg' src='https://i.imgur.com/Ne4vN2G.jpg' alt='wine glass with splashing wine'>
+<button type='button' class='button' id='nextButton'>Next</button></section>`)
   currentQuestion++
   handleNext()
 }
@@ -125,9 +126,9 @@ function wrongAnswer() {
 function handleNext() {
   //This function will load the next Q or results page, depending on where you are in the quiz
   console.log('`handleNext` ran')
-  $('.nextButton').on('click', function (event) {
+  $('#nextButton').on('click', function (event) {
     event.preventDefault()
-    $('.feedback-container').remove()
+    $('.feedbackContainer').remove()
     if (currentQuestion < STORE.questions.length) {
     renderQA()}
     else {
@@ -142,10 +143,10 @@ function finalScore() {
   console.log('`finalScore` ran')
   $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='end'>
-    <h2>Thank you for taking this quiz about wine!</h2>
+  `<section class='endContainer'>
+    <h1>Thank you for taking this quiz about wine!</h1>
      <p>You got ${score} questions correct!</p><br>
-      <button type="button" name="restart" id="restart-button">Click here to start new quiz</button>
+      <button type='button' name='restart' class='button' id='restartButton'>Click here to start new quiz</button>
   </section>`)
 }
 
@@ -158,10 +159,10 @@ function restartQuiz() {
   //This function will take user back to main page
   //so they can restart the quiz
   console.log('`restartQuiz` ran')
-  $('#restart-button').on('click', function(event) {
+  $('#restartButton').on('click', function(event) {
     event.preventDefault()
-    $('.end').remove()
-    resetStats()
+    $('.endContainer').remove()
+    // resetStats()
     loadApp()
   })
 }
