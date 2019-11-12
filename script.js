@@ -145,7 +145,7 @@ function finalScore() {
   $('#wineApp').empty()
   $('#wineApp').append(
   `<section class='endContainer container'>
-    <h1>Thank you for taking this quiz about wine!</h1>
+    <h1 class='endH1'>Thank you for taking this quiz about wine!</h1>
      <p>You got ${score} questions correct.</p><br>
      <img class='finalImg' src='https://i.imgur.com/FlbWQFN.jpg' alt='a pile of wine corks'>
       <button type='button' name='restart' class='button' id='restartButton'>Click here to start a new quiz</button>
@@ -154,7 +154,7 @@ function finalScore() {
 
 function resetStats() {
   score = 0
-  questionNumber = 0
+  currentQuestion = 0
 }
 
 function restartQuiz() {
