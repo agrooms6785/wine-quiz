@@ -1,3 +1,5 @@
+'use strict'
+
 function mainComponent (buttonText) {
   return `<main class='quizContainer container'>
       <section class='quiz-body animate'>
