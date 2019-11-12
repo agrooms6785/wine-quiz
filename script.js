@@ -101,6 +101,7 @@ function finalScore() {
 }
 
 function resetStats() {
+  console.log('`resetStats` ran')
   score = 0
   currentQuestion = 0
 }
@@ -114,6 +115,7 @@ function restartQuiz() {
     $('.endContainer').remove()
     resetStats()
     loadApp()
+    startWineQuiz()
   })
 }
 
