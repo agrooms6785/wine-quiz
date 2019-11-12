@@ -5,7 +5,7 @@ let currentQuestion = 0
 let score = 0
 
 function mainComponent (buttonText) {
-  return `<main class='quizContainer'>
+  return `<main class='quizContainer container'>
       <section class='quiz-body animate'>
         <h1 class='main-heading'>How much do you really know about wine?</h1>
         <section class='image-body'>
@@ -47,13 +47,13 @@ function renderQA() {
   //This function will render the first question, then subsequent questions
   console.log('`renderQA` ran')
   if (currentQuestion < STORE.questions.length) {
-  $('#wineApp').append(`<main class='qAcontainer'> <section class='questionScoreBar'>
+  $('#wineApp').append(`<main class='qAcontainer container'> <section class='questionScoreBar'>
 <ul id='questionScoreList'>
 <li>Question ${currentQuestion+1} of 8</li>
 <li>Score: ${score}</li>
 </ul>
 </section><br>
-<form class='questionContainer'>
+<form class='questionContainer container'>
   <h2>${STORE.questions[currentQuestion].question}</h2>
     <fieldset name='answer options' class='answerOptions'>
         <label for='answer-one'>
@@ -73,8 +73,8 @@ function renderQA() {
             <span>${STORE.questions[currentQuestion].answers[3]}</span><br>
         </label>
     </fieldset>
+    <button type='submit' class='button' id='submitButton'>Check Answer</button>
 </form>
-<button type='submit' class='button' id='submitButton'>Check Answer</button>
 <main>`)}
   submitAnswer()
   }
@@ -83,7 +83,7 @@ function submitAnswer() {
   //This function submits a selected answer and checks it against
   //the correct answer. It then runs answer functions accordingly.
   console.log('`submitAnswer` ran')
-  $('#submitButton').on('click', function (event) {
+  $('.questionContainer').on('submit', function (event) {
     event.preventDefault()
     let selected = $('input:checked')
     let answer = selected.val()
@@ -102,7 +102,7 @@ function rightAnswer() {
   console.log('`rightAnswer` ran')
   $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='feedbackContainer'><h2>That's correct!</h2>
+  `<section class='feedbackContainer container'><h2>That's correct!</h2>
 <img id='rightImg' src='https://i.imgur.com/3sOqSPp.jpg' alt='cheers with wine glasses'>
 <button type='button' class='button' id='nextButton'>Next</button></section>`)
   currentQuestion++
@@ -116,7 +116,7 @@ function wrongAnswer() {
   console.log('`wrongAnswer` ran')
     $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='feedbackContainer'><h2>Uh oh, wrong answer! The correct answer is actually: ${STORE.questions[currentQuestion].correctAnswer}</h2>
+  `<section class='feedbackContainer container'><h2>Uh oh, wrong answer! The correct answer is actually: ${STORE.questions[currentQuestion].correctAnswer}</h2>
 <img id='wrongImg' src='https://i.imgur.com/Ne4vN2G.jpg' alt='wine glass with splashing wine'>
 <button type='button' class='button' id='nextButton'>Next</button></section>`)
   currentQuestion++
@@ -133,6 +133,7 @@ function handleNext() {
     renderQA()}
     else {
       finalScore()
+      restartQuiz()
     }
   })
 }
@@ -143,16 +144,17 @@ function finalScore() {
   console.log('`finalScore` ran')
   $('#wineApp').empty()
   $('#wineApp').append(
-  `<section class='endContainer'>
+  `<section class='endContainer container'>
     <h1>Thank you for taking this quiz about wine!</h1>
-     <p>You got ${score} questions correct!</p><br>
-      <button type='button' name='restart' class='button' id='restartButton'>Click here to start new quiz</button>
+     <p>You got ${score} questions correct.</p><br>
+     <img class='finalImg' src='https://i.imgur.com/FlbWQFN.jpg' alt='a pile of wine corks'>
+      <button type='button' name='restart' class='button' id='restartButton'>Click here to start a new quiz</button>
   </section>`)
 }
 
 function resetStats() {
-  score = 0;
-  questionNumber = 0;
+  score = 0
+  questionNumber = 0
 }
 
 function restartQuiz() {
@@ -162,7 +164,7 @@ function restartQuiz() {
   $('#restartButton').on('click', function(event) {
     event.preventDefault()
     $('.endContainer').remove()
-    // resetStats()
+    resetStats()
     loadApp()
   })
 }
@@ -170,8 +172,8 @@ function restartQuiz() {
 function makeQuiz() {
   loadApp()
   startWineQuiz()
-  // finalScore()
-  // restartQuiz()
+  resetStats()
+  restartQuiz()
 }
 
 $(makeQuiz)
